@@ -69,12 +69,12 @@ signOut() => Promise<void>
 ### getAccount()
 
 ```typescript
-getAccount() => Promise<Account | null>
+getAccount() => Promise<{ account: Account | null; }>
 ```
 
-Returns null when no account is cached.
+Returns null account when no account is cached.
 
-**Returns:** <code>Promise&lt;<a href="#account">Account</a> | null&gt;</code>
+**Returns:** <code>Promise&lt;{ account: <a href="#account">Account</a> | null; }&gt;</code>
 
 --------------------
 

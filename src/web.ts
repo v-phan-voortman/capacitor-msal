@@ -11,7 +11,7 @@ export class MsalWeb extends WebPlugin implements MsalPlugin {
     throw this.unimplemented('Msal is not available on web.');
   }
 
-  async getAccount(): Promise<Account | null> {
+  async getAccount(): Promise<{ account: Account | null }> {
     throw this.unimplemented('Msal is not available on web.');
   }
 

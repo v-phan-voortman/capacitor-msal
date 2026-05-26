@@ -1,11 +1,11 @@
 /**
  * Plugin configuration set in capacitor.config.ts under plugins.Msal.
- * Consumed by the Android native layer at startup; iOS is not yet implemented.
  *
  * @example
  * ```typescript
  * plugins: {
  *   Msal: {
+ *     clientId: 'YOUR_CLIENT_ID',
  *     authority: 'https://login.microsoftonline.com/YOUR_TENANT_ID',
  *     defaultScopes: ['api://YOUR_CLIENT_ID/.default'],
  *   } satisfies MsalPluginConfig,
@@ -13,6 +13,10 @@
  * ```
  */
 export interface MsalPluginConfig {
+  /**
+   * Azure AD application (client) ID. Required.
+   */
+  clientId: string;
   /**
    * MSAL authority URL. Defaults to https://login.microsoftonline.com/common if not set.
    * Example: "https://login.microsoftonline.com/YOUR_TENANT_ID"
@@ -51,8 +55,8 @@ export interface MsalPlugin {
 
   signOut(): Promise<void>;
 
-  /** Returns null when no account is cached. */
-  getAccount(): Promise<Account | null>;
+  /** Returns null account when no account is cached. */
+  getAccount(): Promise<{ account: Account | null }>;
 
   /**
    * Acquire an access token silently from the OS token cache.
